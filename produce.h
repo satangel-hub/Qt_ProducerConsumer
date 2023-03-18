@@ -2,18 +2,18 @@
 #define PRODUCE_H
 
 #include <QObject>
-#include <QMutexLocker>
 #include <QThread>
-#include <QWaitCondition>
+#include <QTimer>
 
 class produce : public QObject
 {
     Q_OBJECT
 public:
     explicit produce(QObject *parent = nullptr);
-    void runwhile(const int DataSize=1000,const int bufferSize=10,QStringList listBuffer={""},QMutex *mutex=0,QWaitCondition *bufferNotEmpty=0,QWaitCondition *bufferNotFull=0);
-signals:
+    QTimer ptime;
 
+signals:
+    void siggoods(QString);
 };
 
 #endif // PRODUCE_H
